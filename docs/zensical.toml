@@ -1,0 +1,28 @@
+site_name = "Beacon"
+site_description = "Office door LED sign — ESP32 + P4 HUB75 panel with HTTP API"
+site_author = "sensokame"
+docs_dir = "."
+site_dir = "site"
+
+nav = [
+  {"Home" = "index.md"},
+  {"Getting Started" = "getting-started/index.md"},
+  {"Hardware" = "hardware/index.md"},
+  {"Firmware" = "firmware/index.md"},
+  {"Client" = "client/index.md"},
+  {"API Reference" = "api/index.md"}
+]
+
+[theme]
+palette = [
+  {scheme = "slate", primary = "black", accent = "amber"},
+  {scheme = "default", primary = "black", accent = "amber"}
+]
+
+extra_css = [
+  "stylesheets/theme-toggle.css"
+]
+
+extra_javascript = [
+  "javascripts/theme-toggle.js"
+]

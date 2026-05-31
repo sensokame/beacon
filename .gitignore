@@ -1,0 +1,13 @@
+# PlatformIO
+firmware/.pio/
+firmware/.vscode/
+
+# Docs build output
+docs/site/
+
+# Client
+client/node_modules/
+client/dist/
+
+# Env
+.env
