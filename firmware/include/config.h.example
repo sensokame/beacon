@@ -1,0 +1,11 @@
+#pragma once
+
+// WiFi — copy this file to config.h and fill in your credentials
+#define WIFI_SSID     "your_ssid"
+#define WIFI_PASSWORD "your_password"
+#define WIFI_HOSTNAME "beacon"
+
+// HUB75 panel
+#define PANEL_WIDTH   64
+#define PANEL_HEIGHT  32
+#define PANELS_NUMBER 1
