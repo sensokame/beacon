@@ -113,13 +113,20 @@ void handleSerial() {
     while (Serial.available()) {
         char c = Serial.read();
         if (c == '\n' || c == '\r') {
+            Serial.println();
             serialBuf.trim();
             if (serialBuf.length() > 0) {
                 dispatchCommand(serialBuf);
                 serialBuf = "";
             }
+        } else if (c == 0x08 || c == 0x7F) {
+            if (serialBuf.length() > 0) {
+                serialBuf.remove(serialBuf.length() - 1);
+                Serial.print("\b \b");
+            }
         } else {
             serialBuf += c;
+            Serial.print(c);
         }
     }
 }

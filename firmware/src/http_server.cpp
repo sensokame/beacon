@@ -166,11 +166,21 @@ void initServer() {
 
     // GET / — redirect to boot mode if active, otherwise serve main UI
     server.on("/", HTTP_GET, [](AsyncWebServerRequest *req) {
-        if (EspOta::isBootMode()) { req->redirect("/ota"); return; }
+        if (EspOta::isBootMode()) {
+            AsyncWebServerResponse *resp = req->beginResponse(302, "text/plain", "");
+            resp->addHeader("Location", "/ota");
+            resp->addHeader("Cache-Control", "no-store");
+            req->send(resp);
+            return;
+        }
         req->send(200, "text/html", INDEX_HTML);
     });
 
-    EspOta::init(server, strlen(OTA_PASSWORD) > 0 ? OTA_PASSWORD : nullptr);
+    static const EspOta::OtaTarget targets[] = {
+        EspOta::flashTarget("firmware", "Firmware"),
+    };
+    EspOta::init(server, strlen(OTA_PASSWORD) > 0 ? OTA_PASSWORD : nullptr,
+                 targets, 1);
 
     server.begin();
     Serial.println("# HTTP server started");
