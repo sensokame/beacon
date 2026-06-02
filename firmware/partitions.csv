@@ -1,0 +1,9 @@
+# Custom partition table — two OTA slots, no filesystem
+# Flash size: 4MB (0x400000)
+# Each app slot: ~1.9MB (vs 1.25MB default)
+#
+# Name    Type  SubType  Offset    Size
+nvs,      data, nvs,     0x9000,   0x5000,
+otadata,  data, ota,     0xe000,   0x2000,
+app0,     app,  ota_0,   0x10000,  0x1F0000,
+app1,     app,  ota_1,   0x200000, 0x1F0000,

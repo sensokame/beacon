@@ -5,6 +5,10 @@
 #define WIFI_PASSWORD "your_password"
 #define WIFI_HOSTNAME "beacon"
 
+// OTA boot mode — set a password to protect /ota and the upload endpoints
+// Leave as empty string "" to disable authentication
+#define OTA_PASSWORD "beacon"
+
 // HUB75 panel
 #define PANEL_WIDTH   64
 #define PANEL_HEIGHT  32
